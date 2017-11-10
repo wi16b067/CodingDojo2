@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CodingDojo2"
         mc:Ignorable="d"
         Title="CodingDojo2" Height="960" Width="1280"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Background="Black"
         Foreground="White">
     <Window.Resources>
@@ -25,7 +26,12 @@
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Border BorderBrush="Red" BorderThickness="2" Margin="2">
@@ -34,7 +40,18 @@
                     <Label Content="Grauwasser Überlauf" Foreground="Red"/>
                 </StackPanel>
             </Border>
-            <Label Grid.Row="1"  Content="tbd" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Label Grid.Row="1"  Content="Aktoren" Foreground="White" VerticalAlignment="Center"/>
+            <DataGrid Grid.Row="2" ItemsSource="{Binding ActorList}" AutoGenerateColumns="True"/>
+            <StackPanel Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="Hinzufügen" Margin="10"/>
+                <Button Content="Löschen" Margin="10"/>
+            </StackPanel>
+            <Label Grid.Row="4"  Content="Aktoren" Foreground="White" VerticalAlignment="Center"/>
+            <DataGrid Grid.Row="5" ItemsSource="{Binding SensorList}" AutoGenerateColumns="True"/>
+            <StackPanel Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="Hinzufügen" Margin="10"/>
+                <Button Content="Löschen" Margin="10"/>
+            </StackPanel>
         </Grid>
 
         <Border Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="White">
@@ -54,7 +71,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="55"/>
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="0">
@@ -121,7 +138,10 @@
                     <Label Content="4" VerticalAlignment="Center" Foreground="White"/>
                     <Image Source="Images/Speaker Increase - 02.png" Height="30"/>
                 </StackPanel>
-                <Label Content="12:30" Foreground="White" Grid.Row="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Vertical" Grid.Row="14">
+                    <Label Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding CurTime}"/>
+                    <Label Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{Binding CurDate}"/>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>
